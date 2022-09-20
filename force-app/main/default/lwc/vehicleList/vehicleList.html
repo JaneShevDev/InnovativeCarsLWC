@@ -1,9 +1,11 @@
 <template>
+    <lightning-layout-item padding="around-small" size="10">
     <lightning-card title="Vehicles">
         <lightning-datatable if:true={vehicles.data}
             key-field="id"
             data={vehicles.data}
             columns={columns}>
         </lightning-datatable>
-    </lightning-card>    
+    </lightning-card>
+</lightning-layout-item>  
 </template>

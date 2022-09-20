@@ -5,10 +5,11 @@ export default class VehicleList extends LightningElement {
     
     columns =  [
         { label: 'Name', fieldName: 'Name', type:'text' },
-        { label: 'Interested', fieldName: 'Interested', type:'Checkbox' },  
+        { label: 'Model', fieldName: 'Model', type:'text' },
+        { label: 'Price', fieldName: 'Price', type:'currency' },  
    ];
 
     @api showroomId;
     @wire(findVehicleByShowroomId,{showroomId:'$showroomId'}) vehicles;
-    
+
 }

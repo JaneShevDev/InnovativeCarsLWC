@@ -9,11 +9,18 @@ export default class ShowroomsList extends LightningElement {
 
     @api accountId;
     @wire(findShowroomByAccountId,{accountId:'$accountId'}) showrooms;
-    
     showroomidfromparent;
-    handleClick(event){
-        event.preventDefault();     
-        this.showroomidfromparent = event.target.dataset.showroomId;
+
+    handleClick2(event){
+        this.showroomidfromparent = event.target.dataset.id;
+                console.log(event.target.dataset);
+
+        //        this.showroomidfromparent = event.target.dataset.showroomId;
+    }
+
+    test(e){
+        console.log(e.target.dataset);
+       // this.showroomidfromparent = event.target.dataset.showroomId;
     }
 
 }

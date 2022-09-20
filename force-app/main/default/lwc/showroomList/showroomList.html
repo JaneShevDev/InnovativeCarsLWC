@@ -3,13 +3,12 @@
         <lightning-layout-item padding="around-small" size="6">
             <lightning-card title="Showrooms">
                 <template for:each={showrooms.data} for:item="shObj" for:index="index">
-                    <p key={shObj.Id} class="slds-p-horizontal_small">
-                        <a href="#" onclick={handleClick} data-showroomid={shObj.Id}>{shObj.Name}</a>
-                    </p>
+                    <lightning-button  variant="base" key={shObj.Id} data-id={shObj.Id} 
+                    onclick={handleClick2} label= {shObj.Name}></lightning-button>
                 </template>
             </lightning-card>
         </lightning-layout-item>
-        <lightning-layout-item padding="around-small" size="5">
+        <lightning-layout-item padding="around-small" size="10">
             <c-vehicle-list showroom-id={showroomidfromparent}></c-vehicle-list> 
         </lightning-layout-item>
 </lightning-layout>
