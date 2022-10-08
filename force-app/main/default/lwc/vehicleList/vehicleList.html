@@ -1,11 +1,18 @@
 <template>
-    <lightning-layout-item padding="around-small" size="10">
-    <lightning-card title="Vehicles">
-        <lightning-datatable if:true={vehicles.data}
-            key-field="id"
-            data={vehicles.data}
-            columns={columns}>
-        </lightning-datatable>
-    </lightning-card>
-</lightning-layout-item>  
+    <lightning-layout-item padding="around-small" size="12">
+        <lightning-card title="Vehicles">
+            <div class="slds-m-around_medium">
+                <template if:true={vehicles.data}>
+                    <lightning-datatable 
+                        key-field="id"
+                        data={vehicles.data}
+                        columns={columns}
+                        onsave={saveHandleAction}
+                        draft-values={draftValues}
+                        hide-checkbox-column>
+                    </lightning-datatable>
+                </template>
+            </div>
+        </lightning-card>
+    </lightning-layout-item>
 </template>
