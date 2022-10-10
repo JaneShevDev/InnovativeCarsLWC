@@ -1,25 +1,21 @@
-import { LightningElement, api, wire } from 'lwc';
-import findVehicleByShowroomId from '@salesforce/apex/VehiclesController.findVehicleByShowroomId';
-import { updateRecord } from 'lightning/uiRecordApi';
+import { LightningElement, wire } from 'lwc';
+import getVehicleList from '@salesforce/apex/TesVehiclesController.getVehicleList';
+import {updateRecord} from 'lightning/uiRecordApi'
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { refreshApex } from '@salesforce/apex';
-
-const columns =  [
+import {refreshApex} from '@salesforce/apex'
+const columns = [
     { label: 'Name', fieldName: 'Name', type:'text' },
     { label: 'Model', fieldName: 'Model__c', type:'text' },
     { label: 'Price', fieldName: 'Price__c', type:'currency' },
     { label: 'Interested', fieldName: 'Interested__c', type:'boolean', editable: true }
 ]
-
-export default class VehicleList extends LightningElement {
-    @api showroomId;
-    
-   columns = columns;
-   draftValues = [];
-    @wire(findVehicleByShowroomId,{showroomId:'$showroomId'}) 
+export default class tesVehicleList extends LightningElement {
+    columns = columns
+    draftValues = []
+    @wire(getVehicleList)
     vehicles;
-  
-    saveHandleAction(event) {
+
+    handleSave(event){
         console.log(event.detail.draftValues)
         const recordInputs = event.detail.draftValues.slice().map(draft=>{
             const fields = Object.assign({}, draft)
@@ -44,6 +40,5 @@ export default class VehicleList extends LightningElement {
                 variant:variant||'success'
             })
         )
-   }
-
+    }
 }
